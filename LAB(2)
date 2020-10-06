@@ -1,0 +1,34 @@
+using System;
+
+namespace LAB2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double u = 0, S = 0, x;
+            int a = 0;
+            string b;
+            Console.Write("Enter value : ");
+            do
+            {
+                x = double.Parse(Console.ReadLine());
+                if (a > x)
+                {
+                    Console.Write("Please enter a different value : ");
+                }
+            } while (a > x);
+
+            for (int i = 0; i <= x; i++)
+            {
+                u += (Math.Pow(i, 2) - Math.Pow(-1, i + 1) * Math.Pow(i, 3)) / (Math.Pow(i, 2) + i + 1);
+                S += u;
+                Console.WriteLine("u" + i + "=" + u);
+                u = 0;
+            }
+            Console.WriteLine("Sum = " + S);
+
+
+        }
+    }
+}
