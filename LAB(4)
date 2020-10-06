@@ -1,0 +1,64 @@
+using System;
+
+namespace Laba_4_CSharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int size;
+            do
+            {
+                Console.Write("Введите размер массива (от 2 до 10) : ");
+                size = int.Parse(Console.ReadLine());
+                if (size <= 1 || size >= 11)
+                    Console.WriteLine("Не правильное значение, попробуйте еще раз!");
+            } while (size <= 1 || size >= 11);
+
+            Console.Write("Введите R : ");
+
+            int R = int.Parse(Console.ReadLine());
+
+            int[] arr = new int[size];
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write("Введите["+i+"] елемент массива : ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            int temp, maxClose = arr[0] + arr[1], minClose = arr[0] + arr[1], iterIMax = 0, iterIMin = 0, iterJMax = 0, iterJMin = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr[i] != arr[j])
+                        temp = R - (arr[i] + arr[j]);
+                    else
+                        continue;
+
+                    if (temp < 0)
+                    {
+                        temp *= -1;
+                    }
+                    if (temp < maxClose)
+                    {
+                        maxClose = temp;
+                        iterIMax = i;
+                        iterJMax = j;
+                    }
+                    if (temp > minClose)
+                    {
+                        minClose = temp;
+                        iterIMin = i;
+                        iterJMin = j;
+                    }
+                }
+            }
+            Console.WriteLine("Максимально приближенная сумма : " + (arr[iterIMax]+arr[iterJMax]) +" Eлементы массива под индексом : "+iterIMax+ " и "+ iterJMax);
+            Console.WriteLine("Минимально приближенная сумма : " + (arr[iterIMin] + arr[iterJMin]) + " Eлементы массива под индексом : " + iterIMin + " и " + iterJMin);
+
+        }
+    }
+}
