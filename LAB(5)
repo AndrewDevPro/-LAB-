@@ -1,0 +1,126 @@
+using System;
+
+namespace LAB5_CSharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int size;
+            do
+            {
+                Console.Write("Введите размер массива (от 2 до 6) : ");
+                size = int.Parse(Console.ReadLine());
+                if (size <= 1 || size >= 11)
+                    Console.WriteLine("Не правильное значение, попробуйте еще раз!");
+            } while (size <= 1 || size >= 6);
+
+            int[,] Arr = new int[size, size];
+            int[,] Arr2 = new int[size, size];
+
+            int height = Arr.GetLength(0);
+            int width = Arr.GetLength(1);
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width ; j++)
+                {
+                    Console.Write("Введите [" + i + "," + j + "] елемент массива :");
+                    Arr[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            Console.WriteLine();
+
+            //
+            //  ВЫВОД ОБЫЧНОГО МАССИВА
+            //
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Console.Write(Arr[i,j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+
+            //
+            // ВЫВОД МАССИВА ПЕРЕВЕРНУТОГО НА 90*
+            //
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Arr2[i, j] = 0;
+                }
+            }
+
+            for (int x = 1,y=0; y < width; x++,y++)
+            {
+                for (int i = 0; i < height; i++)
+                {
+                    Arr2[i, height - x] = Arr[y, i];
+                }
+            }
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Console.Write(Arr2[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+
+            //
+            // ВЫВОД МАССИВА ПЕРЕВЕРНУТОГО НА 180*
+            //
+
+
+            for (int y = 0,x = height - 1; y < width; y++, x--)
+            {
+                for (int i = 0,z=height-1; i < height; i++,z--)
+                {
+                    Arr2[x,z]= Arr[y, i];
+                }
+            }
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Console.Write(Arr2[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+
+            //
+            // ВЫВОД МАССИВА ПЕРЕВЕРНУТОГО НА 270*
+            //
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int i = 0,x = height - 1; i < width; x--,i++)
+                {
+                    Arr2[x,y]= Arr[y, i];
+                }
+            }
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Console.Write(Arr2[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
