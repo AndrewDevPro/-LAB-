@@ -1,0 +1,22 @@
+namespace LabolatornayaWork_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string U, I;
+            double R;
+            Console.WriteLine("Введите напряжение");
+            U = Console.ReadLine();
+
+            Console.WriteLine("Введите силу тока");
+            I = Console.ReadLine();
+
+            R = Convert.ToDouble(U) / Convert.ToDouble(I);
+
+            Console.WriteLine("Cопротивление = "+R);
+
+            Console.ReadKey();
+        }
+    }
+}
